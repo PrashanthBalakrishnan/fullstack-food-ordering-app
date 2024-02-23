@@ -18,7 +18,7 @@ CREATE TABLE "Product" (
     "title" TEXT NOT NULL,
     "desc" TEXT NOT NULL,
     "price" DECIMAL(65,30) NOT NULL,
-    "img" TEXT NOT NULL,
+    "img" TEXT,
     "isFeatured" BOOLEAN NOT NULL DEFAULT false,
     "options" JSONB[],
     "catSlug" TEXT NOT NULL,
