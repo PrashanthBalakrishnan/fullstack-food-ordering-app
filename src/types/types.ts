@@ -16,6 +16,15 @@ export type Menu = {
   color: string;
 }[];
 
+export type ProductType = {
+  id: string;
+  title: string;
+  desc: string;
+  img: string;
+  price: number;
+  options: { title: string; additionalPrice: number }[];
+};
+
 export type OrderType = {
   id: string;
   userEmail: string;
@@ -33,4 +42,15 @@ export type CartItemType = {
   price: number;
   optionTitle: string;
   quantity: number;
+};
+
+export type CartType = {
+  products: CartItemType[];
+  totalItems: number;
+  totalPrice: number;
+};
+
+export type ActionTypes = {
+  addtoCart: (item: CartItemType) => void;
+  removeFromCart: (item: CartItemType) => void;
 };

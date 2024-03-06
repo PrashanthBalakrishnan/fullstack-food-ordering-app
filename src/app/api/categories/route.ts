@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import prisma from "@/libs/prismadb";
+import prisma from "@/utils/prismadb";
 
 // FETCH ALL CATEGORIES
 
