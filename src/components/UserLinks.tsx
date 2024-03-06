@@ -8,9 +8,19 @@ const UserLinks = () => {
   return (
     <div>
       {status === "authenticated" ? (
-        <div>
-          <Link href="/orders">Orders</Link>
-          <button className="ml-4 cursor-pointer" onClick={() => signOut()}>
+        <div className="flex">
+          <div className="flex gap-4">
+            <Link className="whitespace-nowrap" href="/orders">
+              Orders
+            </Link>
+            <Link className="whitespace-nowrap" href="/add">
+              Add Item
+            </Link>
+          </div>
+          <button
+            className="ml-4 cursor-pointer uppercase"
+            onClick={() => signOut()}
+          >
             Logout
           </button>
         </div>

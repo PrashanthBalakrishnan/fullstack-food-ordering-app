@@ -22,7 +22,7 @@ const Price = ({ product }: { product: ProductType }) => {
         quantity * product.price + product.options[selected].additionalPrice
       );
     }
-  }, [product, quantity, selected]);
+  }, [quantity, selected, product]);
 
   const handleCart = () => {
     addtoCart({
@@ -38,7 +38,7 @@ const Price = ({ product }: { product: ProductType }) => {
 
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-2xl font-bold">${total}</h2>
+      <h2 className="text-2xl font-bold">${total.toFixed(2)}</h2>
       {/* Options Container */}
       <div className="flex gap-4">
         {product.options?.length &&
