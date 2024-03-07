@@ -12,21 +12,29 @@ const SuccessPage = () => {
     const makeRequest = async () => {
       try {
         await fetch(`http://localhost:3000/api/confirm/${payment_intent}`, {
-          method: "POST",
+          method: "PUT",
         });
-        router.push("/orders");
-      } catch (error) {
-        console.log(error);
+        setTimeout(() => {
+          router.push("/orders");
+        }, 5000);
+      } catch (err) {
+        console.log(err);
       }
     };
+
     makeRequest();
   }, [payment_intent, router]);
 
   return (
-    <div>
-      Paymnet successful. You are being redirected to the orders page. Please do
-      not close the page.
-    </div>
+    <>
+      <div className="min-h-[calc(100vh-6rem)] md:min-h-[calc(100vh-15rem)] flex items-center justify-center text-center text-2xl text-green-700">
+        <p className="max-w-[600px]">
+          Payment successful. You are being redirected to the orders page.
+          Please do not close the page.
+        </p>
+      </div>
+    </>
   );
 };
+
 export default SuccessPage;

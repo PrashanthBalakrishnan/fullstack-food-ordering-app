@@ -9,19 +9,16 @@ export const PUT = async ({ params }: { params: { intentId: string } }) => {
       where: {
         intent_id: intentId,
       },
-      data: {
-        status: "Being prepared!",
-      },
+      data: { status: "Being prepared!" },
     });
-
     return new NextResponse(
       JSON.stringify({ message: "Order has been updated" }),
       { status: 200 }
     );
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    console.log(err);
     return new NextResponse(
-      JSON.stringify({ message: "Something went wrong" }),
+      JSON.stringify({ message: "Something went wrong!" }),
       { status: 500 }
     );
   }
