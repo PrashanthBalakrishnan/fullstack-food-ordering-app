@@ -15,25 +15,24 @@ const CartPage = () => {
 
   const handleCheckout = async () => {
     if (!session) {
-      router.push("/");
+      router.push("/login");
     } else {
       try {
         const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/orders", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             price: totalPrice,
             products,
-            status: "Not Paid",
+            status: "Not Paid!",
             userEmail: session.user.email,
           }),
         });
         const data = await res.json();
+
         router.push(`/pay/${data.id}`);
-      } catch (error) {
-        console.log(error);
+      } catch (err) {
+        console.log(err);
       }
     }
   };
