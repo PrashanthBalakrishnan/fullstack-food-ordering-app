@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 
-const SuccessPage = () => {
+function Search() {
   const searchParams = useSearchParams();
   const router = useRouter();
   useEffect(() => {
@@ -25,7 +25,14 @@ const SuccessPage = () => {
 
     makeRequest();
   }, [router, searchParams]);
-
   return <div>Paymeent is successful please do not close the page.</div>;
+}
+
+const SuccessPage = () => {
+  return (
+    <Suspense>
+      <Search />
+    </Suspense>
+  );
 };
 export default SuccessPage;

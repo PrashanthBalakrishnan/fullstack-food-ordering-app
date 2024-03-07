@@ -1,5 +1,6 @@
 import { getAuthSession } from "@/utils/auth";
 import { NextRequest, NextResponse } from "next/server";
+import prisma from "@/utils/prismadb";
 
 // GET SINGLE PRODUCT
 export const GET = async (
@@ -8,7 +9,7 @@ export const GET = async (
 ) => {
   const { id } = params;
   try {
-    const product = await prisma?.product.findUnique({
+    const product = await prisma.product.findUnique({
       where: { id },
     });
     return new NextResponse(JSON.stringify(product), {
