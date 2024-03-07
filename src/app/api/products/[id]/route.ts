@@ -1,5 +1,6 @@
 import { getAuthSession } from "@/utils/auth";
 import { NextRequest, NextResponse } from "next/server";
+import prisma from "@/utils/prismadb";
 
 // GET SINGLE PRODUCT
 export const GET = async (
