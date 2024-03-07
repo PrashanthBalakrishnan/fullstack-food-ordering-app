@@ -6,9 +6,8 @@ export type Product = {
   price: number;
   options?: { title: string; additionalPrice: number }[];
 };
-
-export type Menu = {
-  id: number;
+export type MenuType = {
+  id: string;
   slug: string;
   title: string;
   desc?: string;
