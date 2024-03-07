@@ -17,6 +17,7 @@
     "next": "14.1.0",
     "next-auth": "^4.24.6",
     "react": "^18",
+    "react-confetti-explosion": "^2.1.2",
     "react-countdown": "^2.3.5",
     "react-dom": "^18",
     "react-toastify": "^10.0.4",

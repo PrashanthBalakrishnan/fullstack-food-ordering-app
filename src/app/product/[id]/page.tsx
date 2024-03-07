@@ -1,11 +1,10 @@
 import DeleteButton from "@/components/DeleteButton";
 import Price from "@/components/Price";
 import { ProductType } from "@/types/types";
-import { createURL } from "@/utils/api";
 import Image from "next/image";
 
 const getData = async (id: string) => {
-  const res = await fetch(createURL(`/api/products/${id}`), {
+  const res = await fetch(`http://localhost:3000/api/products/${id}`, {
     cache: "no-store",
   });
   if (!res.ok) throw new Error("Something went wrong");
