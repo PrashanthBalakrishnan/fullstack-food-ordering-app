@@ -1,5 +1,4 @@
 import Image from "next/image";
-import CountDown from "./CountDown";
 
 const Offer = () => {
   return (
@@ -9,11 +8,10 @@ const Offer = () => {
         <h2 className="text-white text-5xl font-bold xl:text-6xl">
           Delicious Burger and French Fry
         </h2>
-        <p className="text-white xl:text-xl">
-          Progressively simplify effective e-toilers and process-centric methods
-          of empowerment. Quickly pontificate parallel.
+        <p className="text-yellow-500 xl:text-xl">
+          Get your favorite burger and fries at a discounted price. Offer valid
+          for a limited time.
         </p>
-        <CountDown />
         <button className="bg-red-500 text-white rounded-md py-3 px-6">
           Order Now
         </button>

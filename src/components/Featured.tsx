@@ -12,6 +12,7 @@ const getData = async () => {
 
 const Featured = async () => {
   const featuredProducts: Product[] = await getData();
+  console.log(featuredProducts);
   return (
     <div className="w-screen overflow-x-scroll text-red-500">
       {/* Warpper */}
