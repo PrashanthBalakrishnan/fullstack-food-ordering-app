@@ -1,13 +1,15 @@
 import prisma from "@/utils/prismadb";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const PUT = async ({ params }: { params: { intentId: string } }) => {
-  const { intentId } = params;
-
+export const PUT = async (
+  req: NextRequest,
+  { params }: { params: { intentId: string } }
+) => {
+  console.log(params.intentId);
   try {
     await prisma.order.update({
       where: {
-        intent_id: intentId,
+        intent_id: params.intentId,
       },
       data: { status: "Being prepared!" },
     });
@@ -18,7 +20,7 @@ export const PUT = async ({ params }: { params: { intentId: string } }) => {
   } catch (err) {
     console.log(err);
     return new NextResponse(
-      JSON.stringify({ message: "Something went wrong!" }),
+      JSON.stringify({ message: "Something went wrong intent" }),
       { status: 500 }
     );
   }
