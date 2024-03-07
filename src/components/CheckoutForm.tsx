@@ -87,13 +87,14 @@ const CheckoutForm = () => {
       className="min-h-[calc(100vh-6rem)] md:min-h-[calc(100vh-15rem)] p-4 lg:px-20 xl:px-40 flex flex-col gap-8"
     >
       <LinkAuthenticationElement id="link-authentication-element" />
+      <AddressForm />
+
       <PaymentElement
         id="payment-element"
         options={{
           layout: "tabs",
         }}
       />
-      <AddressForm />
       <button
         disabled={isLoading || !stripe || !elements}
         id="submit"
