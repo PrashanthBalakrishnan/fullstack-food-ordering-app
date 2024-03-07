@@ -1,12 +1,16 @@
 "use client";
 import { createURL } from "@/utils/api";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { useEffect, Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 
 const SuccessPage = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const payment_intent = searchParams.get("payment_intent");
+
+  function Search() {
+    const searchParams = useSearchParams();
+    return searchParams.get("payment_intent");
+  }
+  const payment_intent = Search();
 
   useEffect(() => {
     const makeRequest = async () => {
