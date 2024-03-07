@@ -1,17 +1,17 @@
 import { Product } from "@/types/types";
 import Image from "next/image";
 
-const getData = async () => {
-  const res = await fetch("http://localhost:3000/api/products", {
-    cache: "no-store",
-  });
-  if (!res.ok) throw new Error("Something went wrong");
-
-  return res.json();
-};
-
 const Featured = async () => {
-  const featuredProducts: Product[] = await getData();
+  const getProducts = async () => {
+    const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/products`, {
+      cache: "no-store",
+    });
+    if (!res.ok) throw new Error("Something went wrong");
+
+    return res.json();
+  };
+
+  const featuredProducts: Product[] = await getProducts();
   return (
     <div className="w-screen overflow-x-scroll text-red-500">
       {/* Warpper */}

@@ -1,10 +1,11 @@
 import DeleteButton from "@/components/DeleteButton";
 import Price from "@/components/Price";
 import { ProductType } from "@/types/types";
+import { createURL } from "@/utils/api";
 import Image from "next/image";
 
 const getData = async (id: string) => {
-  const res = await fetch(`http://localhost:3000/api/products/${id}`, {
+  const res = await fetch(createURL(`/api/products/${id}`), {
     cache: "no-store",
   });
   if (!res.ok) throw new Error("Something went wrong");
@@ -14,7 +15,6 @@ const getData = async (id: string) => {
 
 const SingleProduct = async ({ params }: { params: { id: string } }) => {
   const singleProduct: ProductType = await getData(params.id);
-  console.log(singleProduct);
   return (
     <div className="p-4 lg:px-20 xl:p-40 h-screen flex flex-col justify-around text-red-500 md:flex-row md:gap-8 md:items-center relative">
       {/* Image Container */}
