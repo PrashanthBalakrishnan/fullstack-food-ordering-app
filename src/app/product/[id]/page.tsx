@@ -4,7 +4,7 @@ import { ProductType } from "@/types/types";
 import Image from "next/image";
 
 const getData = async (id: string) => {
-  const res = await fetch(`http://localhost:3000/api/products/${id}`, {
+  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `/products/${id}`, {
     cache: "no-store",
   });
   if (!res.ok) throw new Error("Something went wrong");
