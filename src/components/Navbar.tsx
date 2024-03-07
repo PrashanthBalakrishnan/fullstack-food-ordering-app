@@ -24,7 +24,7 @@ const Navbar = () => {
       </div>
       {/* RIGHT LINKS */}
       <div className="hidden md:flex gap-4 items-center flex-1 justify-end ">
-        <div className="flex items-center gap-2 cursor-pointer bg-orange-300 px-1 rounded-md md:absolute top-3 lg:static">
+        <div className="flex items-center gap-2 cursor-pointer bg-orange-300 px-1 rounded-md md:absolute top-3">
           <Image src="/phone.png" alt="phone icon" width={20} height={20} />
           <span>123 456 7892</span>
         </div>
