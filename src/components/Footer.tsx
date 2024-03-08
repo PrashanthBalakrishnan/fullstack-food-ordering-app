@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className="h-12 md:h-24 p-4 lg:px-20 xl:px-40 text-red-500 flex items-center justify-between">
+    <div className="static bottom-0 left-0 w-full bg-white h-12 md:h-24 lg:px-20 xl:px-40 text-red-500 flex items-center justify-between">
       <Link href="/" className="font-bold text-xl uppercase">
         Italizze
       </Link>
@@ -12,4 +12,5 @@ const Footer = () => {
     </div>
   );
 };
+
 export default Footer;

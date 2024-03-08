@@ -14,11 +14,12 @@ const getData = async (id: string) => {
 
 const SingleProduct = async ({ params }: { params: { id: string } }) => {
   const singleProduct: ProductType = await getData(params.id);
+  console.log(singleProduct);
   return (
-    <div className="p-4 lg:px-20 xl:p-40 h-screen flex flex-col justify-around text-red-500 md:flex-row md:gap-8 md:items-center relative">
+    <div className="p-4 lg:px-10 xl:p-20 h-[60vh] flex flex-col justify-around text-red-500 md:flex-row md:gap-8 relative md:mt-8">
       {/* Image Container */}
       {singleProduct.img && (
-        <div className="relative w-full h-1/2 md:h-[70%]">
+        <div className="relative w-full h-1/2 md:h-[100%]">
           <Image
             src={singleProduct.img}
             alt=""

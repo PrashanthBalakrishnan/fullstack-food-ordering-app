@@ -2,6 +2,7 @@
 
 import { ProductType } from "@/types/types";
 import { useCartStore } from "@/utils/store";
+import { Minus, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
@@ -30,8 +31,10 @@ const Price = ({ product }: { product: ProductType }) => {
       title: product.title,
       img: product.img,
       price: total,
-      optionTitle: product.options?.[selected].title || "",
-      quantity,
+      ...(product.options?.length && {
+        optionTitle: product.options[selected].title,
+      }),
+      quantity: quantity,
     });
     toast.success("The product has been added to the cart");
   };
@@ -64,13 +67,15 @@ const Price = ({ product }: { product: ProductType }) => {
             <button
               onClick={() => setQuantity((prev) => (prev > 1 ? prev - 1 : 1))}
             >
-              {"<"}
+              <p className="sr-only">Remove 1</p>
+              <Minus width={20} />
             </button>
             <span>{quantity}</span>
             <button
               onClick={() => setQuantity((prev) => (prev < 9 ? prev + 1 : 9))}
             >
-              {">"}
+              <p className="sr-only">Add 1</p>
+              <Plus width={20} />
             </button>
           </div>
         </div>

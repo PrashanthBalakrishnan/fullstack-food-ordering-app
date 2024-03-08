@@ -49,9 +49,6 @@ const Menu = () => {
               Login
             </Link>
           )}
-          <Link href="/cart" onClick={() => setOpen(false)}>
-            <CartIcon />
-          </Link>
         </div>
       )}
     </div>

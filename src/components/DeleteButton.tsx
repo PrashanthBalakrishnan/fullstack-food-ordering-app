@@ -10,19 +10,15 @@ const DeleteButton = ({ id }: { id: string }) => {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  if (status === "loading")
-    return (
-      <p>
-        <Loading />
-      </p>
-    );
-
-  if (status === "unauthenticated" || !session?.user.isAdmin) return null;
+  if (status === "unauthenticated" || !session?.user.isAdmin) return;
 
   const handleDelete = async () => {
-    const res = await fetch(`http://localhost:3000/api/products/${id}`, {
-      method: "DELETE",
-    });
+    const res = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + `/products/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
 
     if (res.status === 200) {
       router.push("/menu");

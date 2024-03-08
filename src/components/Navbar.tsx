@@ -16,10 +16,16 @@ const Navbar = () => {
       <div className="text-xl md:font-bold flex-1 md:text-center">
         <Link href="/">Italizze</Link>
       </div>
+      <div className="md:hidden">
+        <Link href="/cart">
+          <CartIcon />
+        </Link>
+      </div>
       {/* Mobile menu */}
       <div className="md:hidden">
         <Menu />
       </div>
+
       {/* RIGHT LINKS */}
       <div className="hidden md:flex gap-4 items-center flex-1 justify-end ">
         <div className="flex items-center gap-2 cursor-pointer bg-orange-300 px-1 rounded-md md:absolute top-3">
