@@ -1,5 +1,6 @@
 "use client";
 
+import Loading from "@/components/Loading";
 import { stat } from "fs";
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
@@ -12,7 +13,11 @@ const LoginPage = () => {
   const router = useRouter();
 
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
   }
 
   if (status === "authenticated") {
