@@ -3,18 +3,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import CartIcon from "./CartIcon";
+import { signOut, useSession } from "next-auth/react";
 
 const links = [
   { id: 1, title: "Home", url: "/" },
   { id: 2, title: "Menu", url: "/menu" },
-  { id: 3, title: "Working Hours", url: "/" },
-  { id: 4, title: "Contact", url: "/" },
 ];
 
 const Menu = () => {
   const [open, setOpen] = useState(false);
-  // TEMP
-  const user = false;
+  const { status } = useSession();
+
   return (
     <div>
       {!open ? (
@@ -33,13 +32,21 @@ const Menu = () => {
               {item.title}
             </Link>
           ))}
-          {!user ? (
+          {status === "authenticated" ? (
+            <div className="flex items-center flex-col gap-y-8 justify-center">
+              <Link href="/orders" onClick={() => setOpen(false)}>
+                Orders
+              </Link>
+              <button
+                className="cursor-pointer uppercase"
+                onClick={() => signOut()}
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
             <Link href="/login" onClick={() => setOpen(false)}>
               Login
-            </Link>
-          ) : (
-            <Link href="/orders" onClick={() => setOpen(false)}>
-              Orders
             </Link>
           )}
           <Link href="/cart" onClick={() => setOpen(false)}>
