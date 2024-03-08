@@ -1,11 +1,14 @@
 "use client";
 
+import { useCartStore } from "@/utils/store";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect } from "react";
 
 function Search() {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const { emptyCart } = useCartStore();
+
   useEffect(() => {
     const payment_intent = searchParams.get("payment_intent");
     console.log(payment_intent);
@@ -22,9 +25,9 @@ function Search() {
         console.log(error);
       }
     };
-
+    emptyCart();
     makeRequest();
-  }, [router, searchParams]);
+  }, [router, searchParams, emptyCart]);
   return <div>Paymeent is successful please do not close the page.</div>;
 }
 

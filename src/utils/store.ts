@@ -45,11 +45,19 @@ export const useCartStore = create(
           }));
         }
       },
+
       removeFromCart(item) {
         set((state) => ({
           products: state.products.filter((product) => product.id !== item.id),
           totalItems: state.totalItems - item.quantity,
           totalPrice: state.totalPrice - item.price,
+        }));
+      },
+      emptyCart() {
+        set(() => ({
+          products: INITIAL_STATE.products,
+          totalItems: INITIAL_STATE.totalItems,
+          totalPrice: INITIAL_STATE.totalPrice,
         }));
       },
     }),
