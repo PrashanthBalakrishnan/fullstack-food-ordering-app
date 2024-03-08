@@ -1,4 +1,5 @@
 "use client";
+import Loading from "@/components/Loading";
 import { OrderType } from "@/types/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
@@ -16,7 +17,7 @@ const OrdersPage = () => {
   const { isLoading, data, error } = useQuery({
     queryKey: ["orders"],
     queryFn: async () => {
-      const response = await fetch("http://localhost:3000/api/orders");
+      const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/orders");
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -28,7 +29,7 @@ const OrdersPage = () => {
 
   const mutation = useMutation({
     mutationFn: ({ id, status }: { id: string; status: string }) => {
-      return fetch(`http://localhost:3000/api/orders/${id}`, {
+      return fetch(process.env.NEXT_PUBLIC_API_URL + `/orders/${id}`, {
         method: "PUT",
         body: JSON.stringify(status),
         headers: {
@@ -50,7 +51,12 @@ const OrdersPage = () => {
     toast.success("Order has been updated");
   };
 
-  if (isLoading || status === "loading") return <div>Loading...</div>;
+  if (isLoading || status === "loading")
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
 
   return (
     <div className="p-4 lg:px-20 xl:px-40">

@@ -1,5 +1,6 @@
 "use client";
 
+import Loading from "@/components/Loading";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -35,7 +36,7 @@ const AddPage = () => {
 
   const router = useRouter();
 
-  if (status === "loading") return <div>Loading...</div>;
+  if (status === "loading") return <Loading />;
 
   if (status === "unauthenticated" || !session?.user.isAdmin) {
     router.push("/");
