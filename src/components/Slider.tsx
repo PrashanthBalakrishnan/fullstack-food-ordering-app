@@ -22,12 +22,12 @@ const data = [
 
 const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrentSlide((prev) => (prev === data.length - 1 ? 0 : prev + 1));
-  //   }, 5000);
-  //   return () => clearInterval(interval);
-  // }, [currentSlide]);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev === data.length - 1 ? 0 : prev + 1));
+    }, 10000);
+    return () => clearInterval(interval);
+  }, [currentSlide]);
   return (
     <div className="flex flex-col h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] lg:flex-row bg-fuchsia-50">
       {/* TEXT CONTAINER */}
