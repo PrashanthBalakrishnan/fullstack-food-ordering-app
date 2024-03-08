@@ -28,7 +28,14 @@ function Search() {
     emptyCart();
     makeRequest();
   }, [router, searchParams, emptyCart]);
-  return <div>Paymeent is successful please do not close the page.</div>;
+  return (
+    <div className="min-h-[calc(100vh-6rem)] md:min-h-[calc(100vh-15rem)] flex items-center justify-center text-center text-2xl text-red-700">
+      <p className="max-w-[600px]">
+        Payment successful. You are being redirected to the orders page. Please
+        do not close the page.
+      </p>
+    </div>
+  );
 }
 
 const SuccessPage = () => {
